@@ -1,0 +1,19 @@
+1-click "forgot password"
+2-fill out a form with their email addres
+3-prepare a unique token and associate it with the user's account
+4-send an email with a unique link back to our site that confirms email ownership
+5-link back to website, confirm the token, and set a new password
+
+-modificar mail driver de stmp a log
+MAIL_DRIVER=log
+
+-borrar datos de pw resets en la bd
+
+-volver a enviar pw reset
+
+
+-ir a storage-logs-laravel-2021-etc ahi se encuentra el link de recuperacion de pw
+
+-copiar link y pegar en navegador
+
+-borrar el pw reset de bd

@@ -1,0 +1,55 @@
+-crear nuevo proyecto laravel
+
+-pasar siguiente linea
+
+composer require laravel/ui:^1.0
+
+Version     Laravel Version
+1.x         5.8, 6.x
+2.x         7.x
+3.x         8.x
+
+-php artisan ui vue --auth
+
+-crear database laravel6.2
+
+-php artisan migrate
+
+-crearme usuario y revisar users en bd
+
+-autenticar para que en la pantalla de bienvenida salga el nombre del usuario actual
+<div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    You are logged in, {{Auth::user()->name}}
+                </div>
+
+-lo mismo que el anterior
+You are logged in, {{auth()->user()->name}}.
+
+-mostrar nombre en home page, condicionar si no estas logeado para que aparezca laravel nomas
+<div class="content">
+                <div class="title m-b-md">
+                    @if (Auth::check())
+                        Hi,{{Auth::user()->name}}
+                    @else
+                        Laravel    
+                    @endif    
+                </div>
+-mismo que el anterior
+		    @auth
+                        Hi,{{Auth::user()->name}}
+                    @else
+                        Laravel    
+                    @endauth 
+
+-para que en modo incognito refleje esto
+<div class="title m-b-md">
+                    @guest
+                        please sign in
+                    @endguest       
+                </div>
