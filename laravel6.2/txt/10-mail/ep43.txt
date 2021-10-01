@@ -1,0 +1,9 @@
+https://mailtrap.io/
+modificar en .env
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=sadasd32423s
+MAIL_PASSWORD=wqewqeq2123
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADRESS=admin@example.com

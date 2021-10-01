@@ -1,0 +1,143 @@
+-para crear tabla
+php artisan notifications:table
+php artisan migrate
+
+-crear clase payments controller
+
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Notifications\PaymentReceived;
+use Illuminate\Support\Facades\Notification;
+
+class PaymentsController extends Controller
+{
+    public function create(){
+        return view('payments.create');
+    }
+
+    public function store(){
+        request()->user->notify(new PaymentsReceived());
+    }
+}
+
+-payment received
+<?php
+
+namespace App\Notificactions;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+
+class PaymentReceived extends Notification
+ {
+    use Queueable;
+
+    /**
+        *
+        *
+        *@return void
+
+    */   
+    
+
+    public function __construct($amount)
+    {
+        $this-> $amount;
+    }
+
+    /**
+    *@param mixed $notifiable
+    * @return array
+    */
+
+    public function via($notifiable)
+    {
+        return ['mail','database'];
+    }
+
+    /**
+    *@param mixed $notifiable
+    *@return  Illuminate\Notifications\Messages\MailMessage;
+    */
+
+    public function toMail($notifiable)
+    {
+        return (new MailMessage)
+            ->subject('Your laracasts payment was received')
+            ->greeting("what's up")
+            ->line("the introduction to the notification")
+            ->line("lorem ipsum lore desired consecuter adpisign elit")
+            ->action('sign up', url('/'))
+            ->line('thanks');
+    }
+  /**
+    *@param mixed $notifiable
+   *@return array
+  */
+    public function toArray($notifiable)
+    {
+        return [
+            'amount' => $this->amount
+        ];
+    }
+
+}
+
+-editar rutas
+
+Route::get('payments/create','PaymentsController@create')->middleware('auth');
+Route::post('payments','PaymentsController@create')->middleware('auth');
+Route::get('notifications','UserNotificationsController@show')->middleware('auth');
+
+Auth::routes();
+
+-crear controller
+php artisan make:controller UserNotificationsController
+
+-crear funcion dentro
+public function show()
+    {
+        return view ('notifications.show')
+    }
+
+
+-crear carpeta notifications y show.blade dentro
+
+-copiar contenido de create blade a show
+@extends('layout.app')
+
+@section('content')
+
+    <div class="container">
+        <form
+            method="POST"
+            action="/payments"
+            >
+
+            @csrf 
+
+            <button
+                type="submit"
+                class="btn btn-primary"
+            >
+            Make payment
+
+            </button>
+        </form>
+    </div>
+
+-crear clase notifiable.php
+<php?
+
+namespace Illuminate\Notifications;
+
+trait Notifiable
+{
+    use HasDatabaseNotifications, RoutesNotifications;
+}
+
+    @endsection

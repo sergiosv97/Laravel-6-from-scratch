@@ -1,0 +1,36 @@
+-crear mail
+php artisan make:mail ContactMe
+
+-crear clase contact-me.blade.php en carpeta views.emails
+
+-editar function build dentro de contactMe
+public function build()
+    {
+        return $this->view('emails.contact-me');
+    }
+
+-editar function store dentro de contact controller
+public function store()
+    {
+        // Log::info('ingresa');
+        request()->validate(['email'=> 'required|email']);
+        
+        //Log::info('ingresa mail');
+      //  Mail::raw('it works!', function ($message){
+       //     $message->to(request('email'))
+       //     ->subject('hello there');
+      //  });
+        Mail::to(request('email'))
+             ->send(new ContactMe());
+
+        return redirect('/contact')
+         ->with('message','email sent!');
+    }
+
+-editar body de contact-me
+<body>
+        <h1>it works again!</h1>
+        <p>It sounds like you want to hear more about{{$topic}.}</p>
+    </body>
+
+-

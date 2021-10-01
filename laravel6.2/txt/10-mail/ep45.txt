@@ -1,0 +1,45 @@
+-cortar contenido de contact blade
+
+<!DOCTYPE html>
+<html class="h-full">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1, maximum-scale=1.0, minimum scale=1.0">
+        <meta http-equiv="X-UA-Compatible"
+              content="ie-edge">
+
+
+        <title>Document<title>
+
+        
+    </head>
+    
+    <body>
+        <h1>it works again!</h1>
+        <p>It sounds like you want to hear more about{{$topic}.}</p>
+    </body>
+</html>
+
+-hacer esto en lugar de eso
+@component ('mail::message')
+
+# a heading 
+
+lorem ipsum dolor sit amet consectur adipsicing elit. morbi viviera vehicula nils eget blandit
+
+- a list
+
+- goes
+
+- here
+
+@component('mail::button', ['url' = 'https://laracasts.com/'])
+    Visit laracasts
+@endcomponent
+
+@endcomponent
+
+-
+php artisan make:mail Contact --markdown=emails.contact
+
+-php artisan vendor:publish --tag=laravel-mail

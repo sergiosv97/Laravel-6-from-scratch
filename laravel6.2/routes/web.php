@@ -20,3 +20,16 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')
 ->name('home')
 ->middleware('auth');
+
+Route::get('/contact','ContactController@show');
+Route::post('/contact','ContactController@store');
+
+Route::get('/payments/create', 'PaymentsController@create')->middleware('auth')->name('payments.create');
+Route::post('/payments', 'PaymentsController@store')->middleware('auth')->name('payments.store');
+
+//Route::get('payments/create','PaymentsController@create')->middleware('auth');
+//Route::get('payments','PaymentsController@create')->middleware('auth');
+Route::get('notifications','UserNotificationsController@show')->middleware('auth');
+
+Auth::routes();
+
