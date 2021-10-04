@@ -37,8 +37,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function RoutesNotificationForNexmo($notification)
+   /* public function RoutesNotificationForNexmo($notification)
     {
        
+    }*/
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class)->withTimestamps(); 
+    }
+
+    public function assignRole($role)
+    {
+        $this->roles()->save($role); 
     }
 }

@@ -31,5 +31,10 @@ Route::post('/payments', 'PaymentsController@store')->middleware('auth')->name('
 //Route::get('payments','PaymentsController@create')->middleware('auth');
 Route::get('notifications','UserNotificationsController@show')->middleware('auth');
 
+Route::get('conversations','ConversationsController@index');
+Route::get('conversations/{conversation}','ConversationsController@show');
+
+Route::post('best-replies/{reply}','ConversationBestReplyController@store');
+
 Auth::routes();
 
