@@ -1,0 +1,55 @@
+-para insertar nuevo rol
+namespace App;
+>>> $user = User::find(1);
+$role = Role::firstOrCreate([
+... 'name' => 'moderator'
+... ]);
+
+-para insertar abilitie
+
+$ability = Ability::firstOrCreate([
+... 'name' => 'edit_forum'
+... ]);
+
+-ver roles de usuario
+$user->roles;
+
+-ver abilities de usuario
+$user->abilities();
+
+$user->roles->map->abilities;
+
+$user->roles->map->abilities->flatten()->pluck('name')->unique();
+
+-------------
+namespace App;
+
+$user = User::find(1);
+
+$moderator = Role::firstOrCreate([
+'name' => 'moderator'
+]);
+
+$ability = Ability::firstOrCreate([
+ 'name' => 'edit_forum'
+]);
+
+$user->assignRole($moderator);
+
+
+--------------
+
+-- para cargar un ability role de usuario
+$user = User::find(1);
+
+$moderator = Role::firstOrCreate([
+'name' => 'moderator'
+]);
+
+$editForum= Ability::firstOrCreate([
+ 'name' => 'edit_forum'
+]);
+
+$moderator ->allowTo($editForum);
+
+

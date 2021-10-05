@@ -1,5 +1,6 @@
 <?php
 
+auth()->loginUsingId(1);
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,5 +37,8 @@ Route::get('conversations/{conversation}','ConversationsController@show');
 
 Route::post('best-replies/{reply}','ConversationBestReplyController@store');
 
-Auth::routes();
+Route::get('/reports', function () {
+    return 'the secret reports';
+})->middleware('can:edit_forum');
+
 

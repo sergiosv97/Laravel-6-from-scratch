@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Ability;
+use App\Role;
 
 class User extends Authenticatable
 {
@@ -49,6 +51,15 @@ class User extends Authenticatable
 
     public function assignRole($role)
     {
-        $this->roles()->save($role); 
+        if (is_string($role)){
+            $role = Role::whereName($role)->firstOrFail();
+        }
+        
+        $this->roles()->sync($role, false); 
+    }
+
+    public function abilities()
+    {
+        return $this->roles->map->abilities->flatten()->pluck('name')->unique();
     }
 }
