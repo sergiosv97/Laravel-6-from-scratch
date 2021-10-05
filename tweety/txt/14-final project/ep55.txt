@@ -1,0 +1,50 @@
+-crear nuevo project tweety auth
+
+-crear nuevo proyecto
+dentro de la carpeta del proyecto
+composer require laravel/ui "^1.0" --dev
+luego
+php artisan ui vue --auth
+php artisan ui --auth
+
+npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+
+
+Configurar Tailwind con Laravel Mix
+En su webpack.mix.js, agregue tailwindcsscomo un complemento PostCSS:
+
+  // webpack.mix.js
+  mix.js("resources/js/app.js", "public/js")
+    .postCss("resources/css/app.css", "public/css", [
+     require("tailwindcss"),
+    ]);
+
+-agregar estilos css
+/* ./resources/css/app.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+-npm install
+
+-npm run dev
+
+
+mix.js('resources/js/app.js', 'public/js')
+
+mix.postCss("resources/css/main.css", "public/css", [
+   require("tailwindcss"),
+]);
+
+npm install
+npm uninstall --save-dev sass-loader 
+npm install --save-dev sass-loader@7.1.0
+npm run dev
+
+
+npm uninstall tailwindcss postcss autoprefixer
+npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+npm run dev
+
+en app.blade.php cambia app por main
+borra app.css de public/css
