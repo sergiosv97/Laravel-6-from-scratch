@@ -1,0 +1,8 @@
+php artisan make:model Tweet -fmc
+
+php artisan tinker
+-crear tweet
+factory('App\Tweet')->create();
+
+-crear 4 tweets para un usuario
+factory('App\Tweet',4)->create(['user_id' =>1]);

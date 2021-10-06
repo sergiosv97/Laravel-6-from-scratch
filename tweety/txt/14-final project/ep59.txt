@@ -1,0 +1,10 @@
+mover function index de home controller a a tuits controller
+
+elimina home controller
+
+eliminar ruta home
+
+-ver id de los que sigue sergio
+$sergio->follows->pluck('id');
+
+ver el tema de login que no sale

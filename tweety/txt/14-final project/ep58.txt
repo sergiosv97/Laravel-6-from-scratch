@@ -1,0 +1,32 @@
+php artisan make:migration create_follows_table
+
+-para ver a que usuario sigue el user 1
+App\User::find(1)->follows;
+
+
+
+$sergio = App\User::find(1);
+
+
+-para que user 3 siga a sergio
+App\User::find(3)->follow($sergio);
+
+-para ver a quienes sigue user 3
+App\User::find(3)->follows;
+
+-crear un user
+factory('App\User')->create();
+
+-otro mas
+$newUser = factory('App\User')->create();
+
+-seguir al nuevo user
+$sergio->follow($newUser);
+
+
+
+ Schema::create('follows', function (Blueprint $table) {
+            $table->bigIncrements('user_id');
+            $table->unsignedBigInteger('following_user_id');
+            $table->timestamps();
+        });
