@@ -1,0 +1,14 @@
+npx tailwindcss init --full
+
+abrir tailwind config js
+
+
+ir a borderRadius
+
+lg: '0.5rem', estaba asi
+
+se cambio a esto
+
+lg: '1.25rem',
+
+npm run dev para guardar cambios

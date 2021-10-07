@@ -23,8 +23,9 @@ Route::middleware('auth')->group(function(){
     Route::post('/tweets', 'TweetsController@store');
 });
 
-Route::get('/profiles/{user}','ProfilesController@show')->name('profile');
+//Route::get('/profiles/{user}','ProfilesController@show')->name('profile');
 
+//{{ route('profile',auth()->user())}} en sidebar links dentro de profile
 
 Auth::routes();
 
