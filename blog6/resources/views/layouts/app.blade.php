@@ -50,13 +50,22 @@
                                 </li>
                             @endif
                         @else
-
+                        
+                
                             <li class="nav-item"> 
                                 <a href="{{route('categories.index')}}" class="nav-link">Categorías</a>
                             </li> 
 
                             <li class="nav-item"> 
                                 <a href="{{route('posts.index')}}" class="nav-link">Posts</a>
+                            </li>
+
+                            <li class="nav-item"> 
+                                <a href="{{route('salarios.index')}}" class="nav-link">Salarios</a>
+                            </li> 
+
+                            <li class="nav-item"> 
+                                <a href="{{route('noticias.index')}}" class="nav-link">Noticias</a>
                             </li> 
 
                             <li class="nav-item dropdown">

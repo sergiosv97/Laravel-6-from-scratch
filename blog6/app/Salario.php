@@ -3,11 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Category;
 
-class Post extends Model
+class Salario extends Model
 {
-    protected $fillable = ['user_id','category_id','title','slug','body','image'];
+    protected $fillable = ['salario','fecha','title','cedula'];
 
     public function category()
     {
@@ -19,9 +18,8 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function salario()
+    public function post()
     {
-        return $this->belongsTo(Salario::class);
+        return $this->belongsTo(Post::class);
     }
 }
-

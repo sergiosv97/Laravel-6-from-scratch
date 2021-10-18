@@ -24,4 +24,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware(['auth'])->group(function () {
     Route::resource('categories','CategoryController');
     Route::resource('posts','PostController');
+    Route::resource('salarios', 'SalarioController');
+    Route::resource('noticias', 'NoticiaController');
 });

@@ -40,6 +40,34 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="rol" class="col-md-4 col-form-label text-md-right">{{ __('Rol Usuario') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="rol" type="text" class="form-control" name="rol"  value="{{old('rol')}}" required>
+
+                                @error('rol')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{$message}}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="cedula" class="col-md-4 col-form-label text-md-right">{{ __('Cedula Usuario') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="cedula" type="text" class="form-control" name="cedula"  value="{{old('cedula')}}" required>
+
+                                @error('cedula')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{$message}}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">

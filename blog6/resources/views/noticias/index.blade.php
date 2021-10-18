@@ -4,36 +4,32 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <a href="{{route('posts.create')}}" class="btn btn-success mb-3">Crear post</a>
+            <a href="{{route('noticias.create')}}" class="btn btn-success mb-3">Ingresar noticia</a>
             <div class="card">
                 @if (Session::has('message'))
                     <div class = "alert alert-success">{{Session::get('message')}}</div>
                 @endif    
                 
-                <div class="card-header">Lista de publicaciones</div>
+                <div class="card-header">Lista de noticias</div>
                 <table class="table">
                     <thead>
                         <tr>
-                        <th scope="col">ID</th>
+                        <th scope="col">IdNoticia</th>
                         <th scope="col">Titulo</th>
-                        <th scope="col">Categoria</th>
-                        <th scope="col">Body</th>
-                        <th scope="col">Autor</th>
-                        <th scope="col">Portada</th>
+                        <th scope="col">Texto</th>
+                        <th scope="col">Imagen</th>
                         <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($posts as $post)
+                        @foreach ($noticias as $noticia)
                         <tr>
-                        <th scope="row">{{$post->id}}</th>
-                        <td>{{$post->title}}</td>
-                        <td>{{$post->category->name}}</td>
-                        <td>{{$post->body}}</td>
-                        <td>{{$post->user->name}}</td>
-                        <td><img src="{{$post->image}}" width="40" height="40" class="img-fluid"></td>
-                        <td class="d-flex"><a href="{{route('posts.edit', $post->id)}}" class="btn btn-success mr-2">Editar</a>
-                            <form action="{{route('posts.destroy',$post->id)}}" method="POST">
+                        <th scope="row">{{$noticia->id}}</th>
+                        <td>{{$noticia->titulo}}</td>
+                        <td>{{$noticia->texto}}</td>
+                        <td><img src="{{$noticia->imagen}}" width="40" height="40" class="img-fluid"></td>
+                        <td class="d-flex"><a href="{{route('noticias.edit', $noticia->id)}}" class="btn btn-success mr-2">Editar</a>
+                            <form action="{{route('noticias.destroy',$noticia->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE') 
                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Quiere borrar el registro?')">Eliminar</button>
